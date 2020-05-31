@@ -6,7 +6,7 @@ using UnityEngine;
 public class Movement : MonoBehaviourPun
 {
     [SerializeField] private float _movementSpeed = 3F;
-    [SerializeField] private Rigidbody _rb;
+    [SerializeField] private Rigidbody _rb = null;
 
     // Start is called before the first frame update
     void Start()

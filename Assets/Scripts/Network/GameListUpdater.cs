@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class GameListUpdater : MonoBehaviourPunCallbacks, ILobbyCallbacks
 {
-    [SerializeField] GameObject _listView;
-    [SerializeField] GameObject _rowFab;
+    [SerializeField] GameObject _listView = null;
+    [SerializeField] GameObject _rowFab = null;
 
     private void Start()
     {

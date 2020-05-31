@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviourPun
 {
-    [SerializeField] private GameObject _camera;
-    [SerializeField] private GameObject _CinemachineBrain;
+    [SerializeField] private GameObject _camera = null;
+    [SerializeField] private GameObject _CinemachineBrain = null;
 
     // Update is called once per frame
     private void Update()

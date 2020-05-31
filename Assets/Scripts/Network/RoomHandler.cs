@@ -7,8 +7,8 @@ using Photon.Pun;
 
 public class RoomHandler : MonoBehaviour
 {
-    [SerializeField] private Text _name;
-    [SerializeField] private Text _players;
+    [SerializeField] private Text _name = null;
+    [SerializeField] private Text _players = null;
 
     private RoomInfo _room;
 

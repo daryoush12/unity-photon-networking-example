@@ -10,8 +10,8 @@ using WebSocketSharp;
 
 public class CreateRoomForm : MonoBehaviourPunCallbacks
 {
-    [SerializeField] private TMP_InputField _name;
-    [SerializeField] private Slider _maxPlayers;
+    [SerializeField] private TMP_InputField _name = null;
+    [SerializeField] private Slider _maxPlayers = null;
 
     public void SubmitForm()
     {

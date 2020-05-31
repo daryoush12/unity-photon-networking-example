@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
-    public GameObject _playerPrefab;
+    public GameObject _playerPrefab = null;
 
-    [SerializeField] Transform spawnpoint;
+    [SerializeField] private Transform spawnpoint = null;
 
     private void Start()
     {
