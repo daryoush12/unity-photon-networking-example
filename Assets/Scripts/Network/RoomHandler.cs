@@ -8,7 +8,6 @@ using Photon.Pun;
 public class RoomHandler : MonoBehaviour
 {
     [SerializeField] private Text _name;
-    [SerializeField] private Text _status;
     [SerializeField] private Text _players;
 
     private RoomInfo _room;
@@ -21,7 +20,7 @@ public class RoomHandler : MonoBehaviour
     public void SetInformation(RoomInfo info)
     {
         _name.text = info.Name;
-        _status.text = info.IsOpen.ToString();
+      //  _status.text = info.IsOpen.ToString();
         _players.text = info.PlayerCount + " / " + info.MaxPlayers;
         _room = info;
     }
