@@ -6,7 +6,6 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using WebSocketSharp;
 
 public class CreateRoomForm : MonoBehaviourPunCallbacks
 {
