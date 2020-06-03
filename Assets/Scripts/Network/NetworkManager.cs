@@ -12,6 +12,7 @@ public class NetworkManager: MonoBehaviourPunCallbacks
 
     public UnityEvent onConnected;
     public UnityEvent onDisconnected;
+    public UnityEvent onJoinedRoom;
 
     public ConnectionEvent onConnectionFailed;
 
@@ -41,7 +42,16 @@ public class NetworkManager: MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel("Room");
+        /*
+         
+            Instead of loading a level we want to show user a UI VIEW of Room State, 
+        
+            Users in it and await for Ready Input:
+         
+         
+         */
+        //PhotonNetwork.LoadLevel("Room");
+        onJoinedRoom?.Invoke();
     }
 
     public void Connect(string username)
