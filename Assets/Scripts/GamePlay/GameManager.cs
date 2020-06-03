@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             
             PhotonNetwork.Instantiate(_playerPrefab.name, spawnpoint.position * 2, Quaternion.identity, 0);
+
         }
     }
 

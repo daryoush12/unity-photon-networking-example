@@ -12,7 +12,7 @@ public class playerMovement : MonoBehaviourPun
 
     public bool isPlayerWalking;
 
-    public Animator animator;
+
 
     private Camera cam;
     private Rigidbody rb;
@@ -45,7 +45,7 @@ public class playerMovement : MonoBehaviourPun
 
         Vector2 inputVect = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         isPlayerWalking = inputVect != Vector2.zero;
-        animator.SetBool(walkingVar,isPlayerWalking);
+        //animator.SetBool(walkingVar,isPlayerWalking);
         var desiredVel = cam.transform.forward;
         desiredVel.y = 0;
         desiredVel = desiredVel * inputVect.y;

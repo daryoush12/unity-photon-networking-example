@@ -49,12 +49,13 @@ public class NetworkManager: MonoBehaviourPunCallbacks
         if (PhotonNetwork.NetworkingClient.AppVersion == PhotonNetwork.GameVersion)
         {
             Debug.Log(username);
-            AuthenticationValues authValues = new AuthenticationValues();
+            //AuthenticationValues authValues = new AuthenticationValues();
             // do not set authValues.Token or authentication will fail
-            authValues.AuthType = CustomAuthenticationType.Custom;
+            //authValues.AuthType = CustomAuthenticationType.Custom;
             //authValues.AddAuthParameter("nickname", username);
-            authValues.UserId = username; // this is required when you set UserId directly from client and not from web service
-            PhotonNetwork.AuthValues = authValues;
+            //authValues.UserId = username; // this is required when you set UserId directly from client and not from web service
+            //PhotonNetwork.AuthValues = authValues;
+            PhotonNetwork.LocalPlayer.NickName = username;
             PhotonNetwork.ConnectUsingSettings();
         }
     }
