@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 
@@ -13,16 +14,18 @@ public class ParticipantsManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject _participantFab;
     [SerializeField] private Transform _ListHolder;
 
+    public RoomEvent onNewParticipant;
+    public RoomEvent onParticipantLeft;
+
+    private List<Player> _Participants = new List<Player>();
+
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         Hashtable hash = new Hashtable();
-        hash.Add("isReady", false);
+        hash.Add("state", State.Unprepared);
         newPlayer.SetCustomProperties(hash);
-        GameObject ob = Instantiate(_participantFab);
-        _participantFab.transform.parent = _ListHolder;
-
-        
-        
+        _Participants.Add(newPlayer);
+        onNewParticipant?.Invoke(newPlayer, _Participants);
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -30,17 +33,32 @@ public class ParticipantsManager : MonoBehaviourPunCallbacks
         base.OnPlayerLeftRoom(otherPlayer);
     }
 
-
-    public void HostJoinedRoom()
+    public override void OnCreatedRoom()
     {
-        GameObject ob = PhotonNetwork.Instantiate(_participantFab.name, new Vector3(0F, 0F, 0F), Quaternion.identity, 0);
-        ob.transform.SetParent(_ListHolder);
-        ob.transform.localScale = new Vector3(1F,1F,1F);
         Hashtable hash = new Hashtable();
         hash.Add("state", State.Unprepared);
-        ob.GetComponent<PhotonView>().Owner.SetCustomProperties(hash);
-        ob.GetComponent<UIParticipant>().SetUI();
+        PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+        _Participants.Add(PhotonNetwork.LocalPlayer);
+        onNewParticipant?.Invoke(PhotonNetwork.LocalPlayer, _Participants);
     }
+    
+    public bool isAllReady()
+    {
+        int currentPlayers = PhotonNetwork.CurrentRoom.Players.Count;
+        int result = 0;
+        foreach(Player player in PhotonNetwork.CurrentRoom.Players.Values)
+        {
+            if((State)player.CustomProperties["state"] == State.Ready)
+            {
+                result += 1;
+            }
+        }
+        return (result == currentPlayers);
+    }
+
 }
 
 public enum State {Ready, Unprepared}
+
+[System.Serializable]
+public class RoomEvent : UnityEvent<Player, List<Player>> {}
