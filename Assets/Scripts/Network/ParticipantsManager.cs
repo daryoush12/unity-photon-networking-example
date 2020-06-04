@@ -56,6 +56,7 @@ public class ParticipantsManager : MonoBehaviourPunCallbacks
         return (result == currentPlayers);
     }
 
+  
 }
 
 public enum State {Ready, Unprepared}
