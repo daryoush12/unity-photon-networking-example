@@ -9,20 +9,35 @@ using UnityEngine;
 public class UIParticipant : MonoBehaviourPunCallbacks
 {
     [SerializeField] private TextMeshProUGUI _text;
+    [SerializeField] private Player _player;
 
-    public void SetUI()
+
+    public void SetUI(Player player)
     {
-        if (photonView.IsMine)
-            photonView.GetComponentInChildren<TextMeshProUGUI>().text = photonView.Owner.NickName + " - " + 
-                ((State)photonView.Owner.CustomProperties["state"]);
+        if (player.CustomProperties.Keys.Count > 0)
+        {
+            _text = GetComponentInChildren<TextMeshProUGUI>();
+            Debug.Log(player.NickName);
+            _player = player;
+            _text.text = player.NickName + " - " + ((State)player.CustomProperties["state"]);
+        }
+        else
+        {
+            _text = GetComponentInChildren<TextMeshProUGUI>();
+            Debug.Log(player.NickName);
+            _player = player;
+            _text.text = player.NickName;
+        }
+
     }
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
-        if (photonView.Owner == targetPlayer)
+        if (targetPlayer == _player)
         {
-            photonView.GetComponentInChildren<TextMeshProUGUI>().text = photonView.Owner.NickName + " - " + 
-                ((State)photonView.Owner.CustomProperties["state"]);
+            _text.text = _player.NickName + " - " +
+                ((State)_player.CustomProperties["state"]);
         }
     }
+
 }

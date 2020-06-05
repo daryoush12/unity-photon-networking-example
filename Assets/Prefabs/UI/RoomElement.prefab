@@ -117,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: {fileID: 2496154544063373156}
   _players: {fileID: 2425579604059842397}
+  onJoin: {fileID: 11400000, guid: 4e7bfc76bcefc6949869f4f19232b3cb, type: 2}
 --- !u!1 &4740246528430771836
 GameObject:
   m_ObjectHideFlags: 0

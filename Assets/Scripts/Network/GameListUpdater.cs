@@ -21,6 +21,7 @@ public class GameListUpdater : MonoBehaviourPunCallbacks, ILobbyCallbacks
         foreach(RoomInfo room in roomList)
         {
             GameObject inst = Instantiate(_rowFab);
+            inst.transform.localScale = new Vector3(1.0F, 1.0F, 1.0F);
             inst.transform.parent = _listView.transform;
             inst.GetComponent<RoomHandler>().SetInformation(room);
         }

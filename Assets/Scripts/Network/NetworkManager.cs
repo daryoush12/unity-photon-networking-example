@@ -21,9 +21,6 @@ public class NetworkManager: MonoBehaviourPunCallbacks
         Debug.Log("Connected to master with username "+ PhotonNetwork.AuthValues.UserId);
         Debug.Log("In lobby: " + PhotonNetwork.InLobby);
         Debug.Log(PhotonNetwork.GameVersion);
-
-   
-
         onConnected?.Invoke();
         PhotonNetwork.JoinLobby();
     }
