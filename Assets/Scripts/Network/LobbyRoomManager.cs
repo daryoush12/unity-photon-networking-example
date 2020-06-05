@@ -22,14 +22,21 @@ public class LobbyRoomManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
     {
-        Hashtable hash = new Hashtable();
+       
 
         if (isAllReady())
         {
+            Hashtable hash = new Hashtable();
             hash.Add("GameState", GameState.Ready_To_Start);
+            PhotonNetwork.CurrentRoom.SetCustomProperties(hash);
+        }else
+        {
+            Hashtable hash = new Hashtable();
+            hash.Add("GameState", GameState.Waiting_On_Players);
+            PhotonNetwork.CurrentRoom.SetCustomProperties(hash);
         }
 
-        PhotonNetwork.CurrentRoom.SetCustomProperties(hash);
+       
     }
 
     public void StartGame()
@@ -40,6 +47,7 @@ public class LobbyRoomManager : MonoBehaviourPunCallbacks
             Hashtable hash = new Hashtable();
             hash.Add("GameState", GameState.In_Game);
             PhotonNetwork.CurrentRoom.SetCustomProperties(hash);
+
             PhotonNetwork.LoadLevel("Room");
         }
     }

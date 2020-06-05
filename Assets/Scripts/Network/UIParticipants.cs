@@ -26,7 +26,7 @@ public class UIParticipants : MonoBehaviourPunCallbacks
             Debug.Log("Render "+player.NickName);
             GameObject ob = Instantiate(_participantFab);
             ob.transform.SetParent(_ListHolder);
-            ob.transform.localScale = new Vector3(1F, 1F, 1F);
+            ob.transform.localScale = new Vector3(1.0F, 1.0F, 1.0F);
             ob.GetComponent<UIParticipant>().SetUI(player);
         }
     }
@@ -40,7 +40,7 @@ public class UIParticipants : MonoBehaviourPunCallbacks
             Debug.Log("Render " + player.NickName);
             GameObject ob = Instantiate(_participantFab);
             ob.transform.SetParent(_ListHolder);
-            ob.transform.localScale = new Vector3(1F, 1F, 1F);
+            ob.transform.localScale = new Vector3(1.0F, 1.0F, 1.0F);
             ob.GetComponent<UIParticipant>().SetUI(player);
         }
     }
