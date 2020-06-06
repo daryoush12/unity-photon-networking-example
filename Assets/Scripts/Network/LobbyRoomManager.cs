@@ -3,11 +3,13 @@ using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class LobbyRoomManager : MonoBehaviourPunCallbacks
 {
 
+    public UnityEvent onGameStarted;
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {

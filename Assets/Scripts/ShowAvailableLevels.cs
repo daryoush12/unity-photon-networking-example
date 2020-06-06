@@ -29,13 +29,9 @@ public class ShowAvailableLevels : MonoBehaviour
     public void ChosenLevel(int value)
     {
         string name = _selector.itemList[value].itemTitle;
-        foreach(ScriptableLevel level in levels._levels)
-        {
-            if (level.name == name)
-                _chosen.sprite = level._levelBanner;
-            else
-                continue;
-        }
+        _chosen.sprite = levels._levels[value]._levelBanner;
+
+   
     }
 
 

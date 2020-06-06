@@ -17,7 +17,7 @@ public class PlayerStateManager : MonoBehaviourPun
     public void SetUnready()
     {
         Hashtable hash = new Hashtable();
-        hash.Add("state", State.Ready);
+        hash.Add("state", State.Unprepared);
         PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
     }
 
