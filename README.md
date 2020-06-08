@@ -2,6 +2,8 @@ Unity Photon Networking Project
 
 This is a expermentation project where i am implementing a multiplayer game with peer-to-peer connection and MasterServer
 
+You can access the demo here: https://castriul.itch.io/networking-prototype
+
 Login View:
 
 ![ScreenShot](https://i.gyazo.com/7d6ea12a0411cbb69adccf32ac251454.png)
